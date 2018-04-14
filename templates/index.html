@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Users</h1>
+    <table>
+        <tr>
+            <td>id</td>
+            <td>Full Name</td>
+            <td>Email</td>
+            <td>Created At</td>
+            <td>Actions</td>
+        </tr>
+        
+        {% for row in users %}
+        <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.first_name}} {{row.last_name}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row['created_at'].strftime('%B %dth, %Y')}}</td>
+            <td><a href="/users/{{row.id}}">Show</a> <a href="/users/{{row.id}}/edit">Edit</a> <a href="users/{{row.id}}/destroy">Delete</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+            
+    <a href="/users/new">Add a new user</a> 
+    
+</body>
+</html>
